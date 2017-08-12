@@ -3,19 +3,25 @@
 */
 
 // 1. First select and store the elements you'll be working with
-// 2. Create your `submit` event for getting the user's search term
-// 3. Create your `fetch` request that is called after a submission
+// 2. Create your submit event for getting the user's search term
+// 3. Create your fetch request that is called after a submission
 // 4. Create a way to append the fetch results to your page
 // 5. Create a way to listen for a click that will play the song in the audio play
 
 //https://itunes.apple.com/search?key1=value1&key2=value2&key3=value3
 
-player = document.getElementById('music-player');
-searchBar = document.getElementById('search-form');
-searchButton = document.getElementById('search-button');
-results = document.getElementById('results');
-results.addEventListener("click",clicker);
+let player = document.getElementById('music-player');
+let searchBar = document.getElementById('search-form');
+let searchButton = document.getElementById('search-button');
+let resultsSection = document.getElementById('results-section');
+let songLinks = [];
+
 searchButton.addEventListener("click",searchClick);
+resultsSection.addEventListener("click",function(e){
+  // if (e.target.nodename == "LI"){
+  console.log("List item ", e.target, " was clicked!");
+});
+
 
 
 function searchClick() {
@@ -24,9 +30,6 @@ function searchClick() {
   searchBar.value="";
 }
 
-function clicker() {
-  console.log("click!");
-}
 
 function createQuery(searchTerms){
   let query = "https://itunes.apple.com/search?media=music&term=";
@@ -44,8 +47,21 @@ function fetchAPI(url) {
        }
        response.json().then(function(data){
 
-         console.log(data);
+          let markup =`
+                ${data.results.map(datum =>
+                `<li class = "entry">
+                  <p>${datum.trackName}</p>
+                  <p>${datum.artistName}</p>
+                  <p>${datum.collectionName}</p>
+                </li>
+                `).join(' ')}
+              `;
 
+            resultsSection.innerHTML = markup;
+            songLinks = data.results.map(datum => datum.previewUrl);
+
+             console.log(data);
+             console.log(markup);
 
        });
 
@@ -59,9 +75,9 @@ function fetchAPI(url) {
 
 // data[i]:
 // artistName
-//artworkUrl100 (big thumbnail)
-//previewUrl (song)
-//primaryGenreName
-//trackName
-//trackViewUrl
-//collectionName (album)
+// artworkUrl100 (big thumbnail)
+// previewUrl (song)
+// primaryGenreName
+// trackName
+// trackViewUrl
+// collectionName (album)
