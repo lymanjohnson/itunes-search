@@ -19,8 +19,9 @@ searchButton.addEventListener("click",searchClick);
 
 
 function searchClick() {
-  fetchAPI(createQuery(searchBar.textContent));
-  searchBar.textContent="";
+    console.log(searchBar.value);
+  fetchAPI(createQuery(searchBar.value));
+  searchBar.value="";
 }
 
 function clicker() {
@@ -28,8 +29,8 @@ function clicker() {
 }
 
 function createQuery(searchTerms){
-  let query = "https://itunes.apple.com/search?term=";
-  searchTerms = searchTerms.replace(/\s+/g,"&term=");
+  let query = "https://itunes.apple.com/search?media=music&term=";
+  searchTerms = searchTerms.replace(/\s+/g,"+");
   query += searchTerms;
   return query;
 }
@@ -43,7 +44,8 @@ function fetchAPI(url) {
        }
        response.json().then(function(data){
 
-           //Code goes here
+         console.log(data);
+
 
        });
 
@@ -52,3 +54,14 @@ function fetchAPI(url) {
    );
 
  }
+
+
+
+// data[i]:
+// artistName
+//artworkUrl100 (big thumbnail)
+//previewUrl (song)
+//primaryGenreName
+//trackName
+//trackViewUrl
+//collectionName (album)
