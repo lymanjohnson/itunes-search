@@ -14,22 +14,23 @@ let player = document.getElementById('music-player');
 let searchBar = document.getElementById('search-form');
 let searchButton = document.getElementById('search-button');
 let resultsSection = document.getElementById('results-section');
-let songLinks = [];
+let songLinks = {};
 
 searchButton.addEventListener("click",searchClick);
-resultsSection.addEventListener("click",function(e){
-  // if (e.target.nodename == "LI"){
-  console.log("List item ", e.target, " was clicked!");
+resultsSection.addEventListener("click",function(event){
+  if (event.target && event.target.nodeName == "LI"){
+        // console.log(event.target.innerHTML);
+        console.log(event.target.id);}
+  else if (event.target && (event.target.nodeName == "P" || event.target.nodeName == "IMG")){
+    console.log(event.target.parentNode.id);
+  }
 });
-
-
 
 function searchClick() {
     console.log(searchBar.value);
   fetchAPI(createQuery(searchBar.value));
   searchBar.value="";
 }
-
 
 function createQuery(searchTerms){
   let query = "https://itunes.apple.com/search?media=music&term=";
@@ -48,8 +49,9 @@ function fetchAPI(url) {
        response.json().then(function(data){
 
           let markup =`
-                ${data.results.map(datum =>
-                `<li class = "entry">
+                ${data.results.map((datum,index) =>
+                `<li class = "entry" id="no${index}">
+                  <img src="${datum.artworkUrl100}">
                   <p>${datum.trackName}</p>
                   <p>${datum.artistName}</p>
                   <p>${datum.collectionName}</p>
@@ -58,18 +60,17 @@ function fetchAPI(url) {
               `;
 
             resultsSection.innerHTML = markup;
-            songLinks = data.results.map(datum => datum.previewUrl);
 
-             console.log(data);
-             console.log(markup);
+            for (i=0;i<data.results.length;i++){
+              songLinks["no"+i] = data.results[i].previewUrl;
+            }
 
        });
 
      }
 
    );
-
- }
+}
 
 
 
