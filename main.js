@@ -27,9 +27,15 @@ resultsSection.addEventListener("click",function(event){
   }
   // Triggers if the words or image are clicked
   else if (event.target && (event.target.nodeName == "P" || event.target.nodeName == "IMG")){
-    // console.log(event.target.parentNode.id);
-    player.src = songLinks[event.target.parentNode.id]; //the img/text's parent is the box, which has the song's key as its id.
+    //if it's already playing, open the itunes page in a new window
+    if (player.src == songLinks[event.target.parentNode.id]){
+      window.open(pageLinks[event.target.parentNode.id])
+    }
+    //if it isn't already playing, start playing
+    else {
+      player.src = songLinks[event.target.parentNode.id];
     player.play();
+    }
   }
 });
 
@@ -71,6 +77,7 @@ function fetchAPI(url) {
             //Creates a dictionary for song URL values, with DOM element IDs as keys
             for (i=0;i<data.results.length;i++){
               songLinks["no"+i] = data.results[i].previewUrl;
+              pageLinks["no"+i] = data.results[i].trackViewUrl;
             }
 
        });
