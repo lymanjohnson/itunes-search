@@ -15,23 +15,37 @@ let searchBar = document.getElementById('search-form');
 let searchButton = document.getElementById('search-button');
 let resultsSection = document.getElementById('results-section');
 let songLinks = {};
+let pageLinks = {};
 
 
 searchButton.addEventListener("click",searchClick);
 resultsSection.addEventListener("click",function(event){
   // Triggers if the list item box itself is clicked
   if (event.target && event.target.nodeName == "LI"){
-        // console.log(event.target.id);}
-        player.src = songLinks[event.target.id];
-        player.play();
+
+    //if this song is already playing, it opens the iTunes page in a new tab
+    if (player.src == songLinks[event.target.id]){
+      window.open(pageLinks[event.target.id]);
+    }
+
+    //otherwise it starts the song
+    else {
+      player.src = songLinks[event.target.id];
+      player.play();
+    }
   }
+
   // Triggers if the words or image are clicked
   else if (event.target && (event.target.nodeName == "P" || event.target.nodeName == "IMG")){
+
     //if it's already playing, open the itunes page in a new window
     if (player.src == songLinks[event.target.parentNode.id]){
-      window.open(pageLinks[event.target.parentNode.id])
+      console.log(pageLinks[event.target.parentNode.id]);
+      console.log(pageLinks);
+      window.open(pageLinks[event.target.parentNode.id]);
     }
-    //if it isn't already playing, start playing
+
+    //otherwise it starts the song
     else {
       player.src = songLinks[event.target.parentNode.id];
     player.play();
