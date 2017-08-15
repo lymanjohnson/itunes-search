@@ -22,13 +22,13 @@ resultsSection.addEventListener("click",function(event){
   // Triggers if the list item box itself is clicked
   if (event.target && event.target.nodeName == "LI"){
         // console.log(event.target.id);}
-        player.src = event.target.id;
+        player.src = songLinks[event.target.id];
         player.play();
-
+  }
   // Triggers if the words or image are clicked
   else if (event.target && (event.target.nodeName == "P" || event.target.nodeName == "IMG")){
     // console.log(event.target.parentNode.id);
-    player.src = event.target.parentNode.id;
+    player.src = songLinks[event.target.parentNode.id]; //the img/text's parent is the box, which has the song's key as its id.
     player.play();
   }
 });
@@ -68,6 +68,7 @@ function fetchAPI(url) {
 
             resultsSection.innerHTML = markup;
 
+            //Creates a dictionary for song URL values, with DOM element IDs as keys
             for (i=0;i<data.results.length;i++){
               songLinks["no"+i] = data.results[i].previewUrl;
             }
