@@ -16,13 +16,20 @@ let searchButton = document.getElementById('search-button');
 let resultsSection = document.getElementById('results-section');
 let songLinks = {};
 
+
 searchButton.addEventListener("click",searchClick);
 resultsSection.addEventListener("click",function(event){
+  // Triggers if the list item box itself is clicked
   if (event.target && event.target.nodeName == "LI"){
-        // console.log(event.target.innerHTML);
-        console.log(event.target.id);}
+        // console.log(event.target.id);}
+        player.src = event.target.id;
+        player.play();
+
+  // Triggers if the words or image are clicked
   else if (event.target && (event.target.nodeName == "P" || event.target.nodeName == "IMG")){
-    console.log(event.target.parentNode.id);
+    // console.log(event.target.parentNode.id);
+    player.src = event.target.parentNode.id;
+    player.play();
   }
 });
 
