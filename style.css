@@ -13,12 +13,6 @@ body {
 
 }
 
-.entry p {
-  text-align: center;
-  font-size: 16pt;
-  margin: -6pt;
-}
-
 .entry img {
   margin: 0%;
   margin-top: 5%;
@@ -63,19 +57,26 @@ audio {
 }
 
 .player {
-  width: 100%;
+  width: 101%;
   bottom: 0;
   position: fixed;
   border-top: 1px solid white;
-  margin: 0%;
+  margin: -1%;
   padding: 0%;
+  background: white;
+}
+
+#results-section {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 
-
-
 /* Custom, iPhone Retina */
-@media screen and (min-width : 320px) and (max-width : 480px) and (orientation : portrait) {
+@media screen and (min-width : 110px) and (orientation : portrait) {
   .entry {
     display: inline-block;
     text-align: center;
@@ -86,10 +87,17 @@ audio {
     margin-bottom: 5%;
     padding-bottom: 3%;
   }
+
+  .entry p {
+    text-align: center;
+    font-size: 16pt;
+    margin: 0pt;
+  }
+
 }
 
 /* Extra Small Devices, Phones */
-@media screen and (min-width : 320px) and (max-width : 480px) and (orientation : landscape) {
+@media screen and (min-width : 100px) and (orientation : landscape) {
 
   .entry {
     text-align: center;
@@ -98,18 +106,59 @@ audio {
     width: 40%;
     list-style: none;
     color: white;
-    margin: 0% 4% 5% 4%;
+    margin: 0% 3% 5% 3%;
     padding-bottom: 3%;
   }
+
+  .entry p {
+    font-size: 8pt;
+    margin: 0pt;
+  }
+
 }
+
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) and (orientation : portrait){
+
+  .entry {
+    text-align: center;
+    background-color: rgb(44,44,44);
+    height: 30vw;
+    width: 30%;
+    list-style: none;
+    color: white;
+    margin: 0% 1% 5% 1%;
+    padding-bottom: 5%;
+  }
+
+  .entry p {
+    font-size: 8pt;
+    margin: 0pt;
+  }
+
+}
+
+@media only screen and (min-width : 768px) and (orientation : landscape){
+
+  .entry {
+    text-align: center;
+    background-color: rgb(44,44,44);
+    height: 23vw;
+    width: 23%;
+    list-style: none;
+    color: white;
+    margin: 0% 1% 5% 1%;
+    padding-bottom: 5%;
+  }
 
   .entry p {
     font-size: 6pt;
     margin: 0pt;
   }
 
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
+}
 
 
 /* Medium Devices, Desktops */
