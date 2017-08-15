@@ -16,7 +16,7 @@
       <input id="search-form" type="text"></input>
       <input id="search-button" type="button"></input>
     </section>
-    <ul id="results-section">
+    <ul id="results-section" style.display="">
                 <li class="entry" id="no0">
                   <img src="http://is2.mzstatic.com/image/thumb/Music62/v4/b0/41/09/b041099b-0715-354f-10e7-1a6649225948/source/100x100bb.jpg">
                   <p>Hi</p>
@@ -320,6 +320,18 @@
 
               </ul>
   </div>
+
+<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script>
+    var client = filestack.init('AiLkacmUFR5Ogg8s86Etez');
+    function showPicker() {
+        client.pick({
+        }).then(function(result) {
+            console.log(JSON.stringify(result.filesUploaded))
+        });
+    }
+</script>
   <script src="main.js"></script>
+<input type="button" value="Upload" onclick="showPicker()" />
 </body>
 </html>
