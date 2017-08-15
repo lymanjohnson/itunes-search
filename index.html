@@ -6,15 +6,8 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>Really Awesome Music Site</h1>
-    </header>
-    <section class="player">
-      <audio id="music-player" controls="controls" src=""></audio>
-    </section>
     <section class="search">
-      <input id="search-form" type="text"></input>
-      <input id="search-button" type="button"></input>
+      <input id="search-form" type="search"></input>
     </section>
     <ul id="results-section" style.display="">
                 <li class="entry" id="no0">
@@ -317,8 +310,11 @@
                   <p>Andrew Gold</p>
                   <p>Rhino Hi-Five: Andrew Gold - EP</p>
                 </li>
-
               </ul>
+    <section class="player" visibility="hidden">
+      <audio id="music-player" controls="controls" src="" ></audio>
+    </section>
+
   </div>
 
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>

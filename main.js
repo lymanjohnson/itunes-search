@@ -12,14 +12,21 @@
 
 let player = document.getElementById('music-player');
 let searchBar = document.getElementById('search-form');
-let searchButton = document.getElementById('search-button');
 let resultsSection = document.getElementById('results-section');
 let songLinks = {};
 let pageLinks = {};
 let resizePercent = 50;
 
 
-searchButton.addEventListener("click",searchClick);
+
+searchBar.addEventListener("keypress",function(event){
+  if (event.keyCode == 13) {
+    console.log(searchBar.value);
+    fetchAPI(createQuery(searchBar.value));
+    searchBar.value="";
+  }
+})
+
 resultsSection.addEventListener("click",function(event){
   // Triggers if the list item box itself is clicked
   if (event.target && event.target.nodeName == "LI"){
@@ -54,10 +61,6 @@ resultsSection.addEventListener("click",function(event){
   }
 });
 
-function asciiURL(imgurl,resize) {
-  return `https://process.filestackapi.com/AiLkacmUFR5Ogg8s86Etez/ascii=reverse:true,background:black,colored:true,size:${resize}/${imgurl}`;
-}
-
 function searchClick() {
     console.log(searchBar.value);
   fetchAPI(createQuery(searchBar.value));
@@ -71,27 +74,6 @@ function createQuery(searchTerms){
   return query;
 }
 
-function fetchASCII(url) {
-   fetch(url)
-   .then (
-     function(response) {
-       if (response.status !== 200) {
-         console.log("Error "+ response.status);
-       }
-       response.json().then(function(data){
-
-         console.log(data);
-
-       });
-
-     }
-
-   );
-
- }
-
-
-
 function fetchAPI(url) {
    fetch(url)
    .then (
@@ -104,7 +86,7 @@ function fetchAPI(url) {
           let markup =`
                 ${data.results.map((datum,index) =>
                 `<li class = "entry" id="no${index}">
-                  <img src="${ascii(datum.artworkUrl100)}">
+                  <img src="${datum.artworkUrl100}">
                   <p>${datum.trackName}</p>
                   <p>${datum.artistName}</p>
                   <p>${datum.collectionName}</p>
@@ -126,8 +108,6 @@ function fetchAPI(url) {
 
    );
 }
-
-
 
 // data[i]:
 // artistName

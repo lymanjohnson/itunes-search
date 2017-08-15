@@ -1,18 +1,107 @@
 *{
-    font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
-    background-color: black;
-    color: white;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", "Monaco", "Bitstream Vera Sans Mono", monospace;
+}
+
+body {
+  background-color: rgb(33, 33, 33);
 }
 
 .entry {
-  background-color: red;
-  height: 300px;
-  width: 300px;
+  display: inline-block;
+  /*flex-flow: column;*/
+  /*justify-content: center;*/
+  text-align: center;
+  background-color: rgb(44,44,44);
+  height: 90vw;
+  width: 90%;
+  list-style: none;
+  color: white;
+  margin-bottom: 5%;
+  padding-bottom: 3%;
+}
+
+.entry p {
+  text-align: center;
+  font-size: 16pt;
+  margin: -6pt;
+}
+
+.entry img {
+  margin: 0%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 50%;
+  width: 50%;
+  padding: 15%;
+  border-radius: 100%;
+  border: 5px double white;
+
 }
 
 #search-form {
-  width: 100%;
+  text-align: center;
+  width: 50%;
+  margin: 1% 25% 1% 25%;
   height: 100%;
   border: none;
+  font-size: 18pt;
+  transition: 1s;
+  border: 1px solid white;
+}
+
+hr, #search-form:focus {
+  text-align: center;
+  font-size: 40pt;
+  transition: 1s;
+  width: 90%;
+  margin: 1% 5% 1% 5%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+audio {
+  width:100%;
+  background-color: white;
+}
+
+.player {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  border-top: 1px solid white;
+  margin: 0%;
+  padding: 0%;
+}
+
+
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
 
 }
