@@ -16,6 +16,7 @@ let searchButton = document.getElementById('search-button');
 let resultsSection = document.getElementById('results-section');
 let songLinks = {};
 let pageLinks = {};
+let resizePercent = 50;
 
 
 searchButton.addEventListener("click",searchClick);
@@ -53,6 +54,10 @@ resultsSection.addEventListener("click",function(event){
   }
 });
 
+function asciiURL(imgurl,resize) {
+  return `https://process.filestackapi.com/AiLkacmUFR5Ogg8s86Etez/ascii=reverse:true,background:black,colored:true,size:${resize}/${imgurl}`;
+}
+
 function searchClick() {
     console.log(searchBar.value);
   fetchAPI(createQuery(searchBar.value));
@@ -66,6 +71,27 @@ function createQuery(searchTerms){
   return query;
 }
 
+function fetchASCII(url) {
+   fetch(url)
+   .then (
+     function(response) {
+       if (response.status !== 200) {
+         console.log("Error "+ response.status);
+       }
+       response.json().then(function(data){
+
+         console.log(data);
+
+       });
+
+     }
+
+   );
+
+ }
+
+
+
 function fetchAPI(url) {
    fetch(url)
    .then (
@@ -78,7 +104,7 @@ function fetchAPI(url) {
           let markup =`
                 ${data.results.map((datum,index) =>
                 `<li class = "entry" id="no${index}">
-                  <img src="${datum.artworkUrl100}">
+                  <img src="${ascii(datum.artworkUrl100)}">
                   <p>${datum.trackName}</p>
                   <p>${datum.artistName}</p>
                   <p>${datum.collectionName}</p>
