@@ -18,6 +18,8 @@ let songLinks = {};
 let pageLinks = {};
 let resizePercent = 50;
 
+let clinton = "http://www.rtvis.tv/images/news/2010/02/36638-velika.jpg"
+
 
 searchButton.addEventListener("click",searchClick);
 resultsSection.addEventListener("click",function(event){
@@ -71,26 +73,27 @@ function createQuery(searchTerms){
   return query;
 }
 
-function fetchASCII(url) {
-   fetch(url)
-   .then (
-     function(response) {
-       if (response.status !== 200) {
-         console.log("Error "+ response.status);
-       }
-       response.json().then(function(data){
+function fetchASCII(theURL,resize)
+{
 
-         console.log(data);
+  theASCIIurl = asciiURL(theURL,resize)
 
-       });
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari, SeaMonkey
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
 
-     }
+    xmlhttp.open("GET", theASCIIurl, false);
+    xmlhttp.send();
+    console.log(JSON.parse(xmlhttp.body));
+    return xmlhttp.body;
+}
 
-   );
-
- }
-
-
+let billClintonASCII = JSON.parse(fetchASCII(clinton,100));
 
 function fetchAPI(url) {
    fetch(url)
@@ -119,11 +122,8 @@ function fetchAPI(url) {
               songLinks["no"+i] = data.results[i].previewUrl;
               pageLinks["no"+i] = data.results[i].trackViewUrl;
             }
-
        });
-
      }
-
    );
 }
 
