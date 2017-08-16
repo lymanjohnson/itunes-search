@@ -13,17 +13,21 @@
 let player = document.getElementById('music-player');
 let searchBar = document.getElementById('search-form');
 let resultsSection = document.getElementById('results-section');
+let footerSong = document.getElementById('current-song-name');
+let footerArtist= document.getElementById('current-artist-name');
+let footerAlbum = document.getElementById('current-album-name');
+let footerInfoBar = document.getElementById('current-track-info');
 let songLinks = {};
 let pageLinks = {};
+let songNames = {};
+let albumNames = {};
+let artistNames = {};
 let resizePercent = 50;
-
-
 
 searchBar.addEventListener("keypress",function(event){
   if (event.keyCode == 13) {
     console.log(searchBar.value);
     fetchAPI(createQuery(searchBar.value));
-    searchBar.value="";
   }
 })
 
@@ -38,7 +42,11 @@ resultsSection.addEventListener("click",function(event){
 
     //otherwise it starts the song
     else {
+      footerAlbum.innerHTML = albumNames[event.target.id];
+      footerSong.innerHTML = songNames[event.target.id];
+      footerArtist.innerHTML = artistNames[event.target.id];
       player.src = songLinks[event.target.id];
+      footerInfoBar.style.visibility = "";
       player.play();
     }
   }
@@ -55,6 +63,10 @@ resultsSection.addEventListener("click",function(event){
 
     //otherwise it starts the song
     else {
+      footerAlbum.innerHTML = albumNames[event.target.parentNode.id];
+      footerSong.innerHTML = songNames[event.target.parentNode.id];
+      footerArtist.innerHTML = artistNames[event.target.parentNode.id];
+      footerInfoBar.style.visibility = "";
       player.src = songLinks[event.target.parentNode.id];
     player.play();
     }
@@ -98,8 +110,11 @@ function fetchAPI(url) {
 
             //Creates a dictionary for song URL values, with DOM element IDs as keys
             for (i=0;i<data.results.length;i++){
-              songLinks["no"+i] = data.results[i].previewUrl;
-              pageLinks["no"+i] = data.results[i].trackViewUrl;
+              songLinks["no"+i]   =   data.results[i].previewUrl;
+              pageLinks["no"+i]   =   data.results[i].trackViewUrl;
+              songNames["no"+i]   =   data.results[i].trackName;
+              albumNames["no"+i]  =   data.results[i].collectionName;
+              artistNames["no"+i]  =   data.results[i].artistName;
             }
 
        });

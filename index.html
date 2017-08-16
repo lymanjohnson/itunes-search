@@ -7,8 +7,10 @@
 <body>
   <div class="container">
     <section class="search">
-      <input id="search-form" type="search"></input>
+      <input id="search-form" type="search" placeholder="search"></input>
     </section>
+    <br>
+    <br>
     <ul id="results-section" style.display="">
                 <li class="entry" id="no0">
                   <img src="http://is2.mzstatic.com/image/thumb/Music62/v4/b0/41/09/b041099b-0715-354f-10e7-1a6649225948/source/100x100bb.jpg">
@@ -311,22 +313,16 @@
                   <p>Rhino Hi-Five: Andrew Gold - EP</p>
                 </li>
               </ul>
-    <section class="player" visibility="hidden">
+    <section class="player">
+      <div id="current-track-info" visibility="hidden">
+        <div id="current-song-name"></div>
+        <div id="current-artist-name"></div>
+        <div id="current-album-name"></div>
+      </div>
       <audio id="music-player" controls="controls" src="" ></audio>
     </section>
 
   </div>
-
-<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-<script>
-    var client = filestack.init('AiLkacmUFR5Ogg8s86Etez');
-    function showPicker() {
-        client.pick({
-        }).then(function(result) {
-            console.log(JSON.stringify(result.filesUploaded))
-        });
-    }
-</script>
   <script src="main.js"></script>
 <input type="button" value="Upload" onclick="showPicker()" />
 </body>

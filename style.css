@@ -2,15 +2,18 @@
     font-family: "Lucida Sans Typewriter", "Lucida Console", "Monaco", "Bitstream Vera Sans Mono", monospace;
 }
 
-body {
+body  {
   background-color: rgb(33, 33, 33);
 }
 
-.entry {
+.entry:after {
   background-color: rgb(44,44,44);
   list-style: none;
   color: white;
+}
 
+.entry:hover{
+  background-color: rgb(77,77,77);
 }
 
 .entry img {
@@ -25,23 +28,54 @@ body {
 
 }
 
+.search {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 #search-form {
   text-align: center;
-  width: 50%;
-  margin: 1% 25% 1% 25%;
+  width: 100%;
+  /*margin: 2.5% 25% 2.5% 25%;*/
   height: 100%;
   border: none;
-  font-size: 18pt;
+  font-size: 12pt;
   transition: 1s;
-  border: 1px solid white;
+  color: rgb(77,77,77);
+  /*border: 1px solid black;*/
+  background-color: rgb(44,44,44);
 }
 
 hr, #search-form:focus {
   text-align: center;
-  font-size: 40pt;
+  font-size: 32pt;
   transition: 1s;
   width: 90%;
-  margin: 1% 5% 1% 5%;
+  margin: 1.2% 5% 1% 5%;
+  color: rgb(140,140,140);
+  border: 1px solid rgb(77,77,77);
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(77,77,77);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgb(77,77,77);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgb(77,77,77);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgb(77,77,77);
+}
+
+::-webkit-search-cancel-button{
+  display: none;
+}
+
+::-ms-clear{
+  display: none;
 }
 
 input:focus,
@@ -57,11 +91,11 @@ audio {
 }
 
 .player {
-  width: 101%;
+  width: 100%;
   bottom: 0;
   position: fixed;
   border-top: 1px solid white;
-  margin: -1%;
+  margin: 0%;
   padding: 0%;
   background: white;
 }
@@ -72,6 +106,23 @@ audio {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+}
+
+#current-track-info {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  background-color: rgb(33, 33, 33)
+}
+
+#current-track-info div {
+  text-align: center;
+  width: 33%;
+  color: white;
+  flex-shrink: 1;
+  flex-grow: 1;
+  font-size: 10pt;
+  font-size-adjust: auto;
 }
 
 
@@ -150,7 +201,7 @@ audio {
     list-style: none;
     color: white;
     margin: 0% 1% 5% 1%;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
   }
 
   .entry p {
