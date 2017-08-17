@@ -99,7 +99,7 @@ function fetchAPI(url) {
           let markup =`
                 ${data.results.map((datum,index) =>
                 `<li class = "entry" id="no${index}">
-                  <img src="${datum.artworkUrl100}">
+                  <img src="${datum.artworkUrl100}" alt="placeholder.png">
                   <p>${datum.trackName}
                   <br>${datum.artistName}
                   <br>${datum.collectionName}</p>
