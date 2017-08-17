@@ -28,6 +28,7 @@ searchBar.addEventListener("keypress",function(event){
   if (event.keyCode == 13) {
     console.log(searchBar.value);
     fetchAPI(createQuery(searchBar.value));
+    searchBar.blur();
   }
 })
 
