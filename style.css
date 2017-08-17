@@ -140,7 +140,6 @@ audio {
   }
 
   .entry p {
-    text-align: center;
     font-size: 8pt;
   }
 
@@ -151,16 +150,16 @@ audio {
   .entry {
     text-align: center;
     background-color: rgb(44,44,44);
-    height: 40vw;
-    width: 40%;
+    /*height: 70vh;*/
+    width: 38vw;
     list-style: none;
     color: white;
     margin: 0% 5% 5% 5%;
-    padding-bottom: 3%;
+    padding-bottom: 18pt;
   }
 
   .entry p {
-    font-size: 8pt;
+    font-size: 6pt;
     margin: 0pt;
   }
 
