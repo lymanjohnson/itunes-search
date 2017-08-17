@@ -100,8 +100,8 @@ function fetchAPI(url) {
                 `<li class = "entry" id="no${index}">
                   <img src="${datum.artworkUrl100}">
                   <p>${datum.trackName}
-                  \n${datum.artistName}
-                  \n${datum.collectionName}</p>
+                  <br>${datum.artistName}
+                  <br>${datum.collectionName}</p>
                 </li>
                 `).join(' ')}
               `;
