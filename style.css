@@ -126,8 +126,7 @@ audio {
 }
 
 
-/* Custom, iPhone Retina */
-@media screen and (orientation : portrait) {
+@media screen and (max-width:360px){
   .entry {
     display: inline-block;
     text-align: center;
@@ -147,8 +146,7 @@ audio {
 
 }
 
-/* Extra Small Devices, Phones */
-@media screen and (orientation : landscape) {
+@media screen and (min-width:361px){
 
   .entry {
     text-align: center;
@@ -168,12 +166,14 @@ audio {
 
 }
 
+.entry {
+  border: 1px solid rgb(77,77,77);
+}
 
 
-/* Small Devices, Tablets */
-/*@media only screen and (min-width : 768px) and (orientation : portrait){*/
+@media screen and (min-width:768px){
 
-  /*.entry {
+  .entry {
     text-align: center;
     background-color: rgb(44,44,44);
     height: 30vw;
@@ -182,18 +182,19 @@ audio {
     color: white;
     margin: 0% 1% 5% 1%;
     padding-bottom: 5%;
+
   }
 
   .entry p {
     font-size: 8pt;
     margin: 0pt;
-  }*/
+  }
 
-/*}*/
+}
 
-/*@media only screen and (min-width : 768px) and (orientation : landscape){*/
+@media screen and (min-width:1024px){
 
-  /*.entry {
+  .entry {
     text-align: center;
     background-color: rgb(44,44,44);
     height: 23vw;
@@ -207,17 +208,6 @@ audio {
   .entry p {
     font-size: 6pt;
     margin: 0pt;
-  }*/
-
-/*}*/
-
-
-/* Medium Devices, Desktops
-@media only screen and (min-width : 992px) {
-
-}
-
-/* Large Devices, Wide Screens
-@media only screen and (min-width : 1200px) {
+  }
 
 }

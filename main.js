@@ -99,9 +99,9 @@ function fetchAPI(url) {
                 ${data.results.map((datum,index) =>
                 `<li class = "entry" id="no${index}">
                   <img src="${datum.artworkUrl100}">
-                  <p>${datum.trackName}</p>
-                  <p>${datum.artistName}</p>
-                  <p>${datum.collectionName}</p>
+                  <p>${datum.trackName}
+                  \n${datum.artistName}
+                  \n${datum.collectionName}</p>
                 </li>
                 `).join(' ')}
               `;
