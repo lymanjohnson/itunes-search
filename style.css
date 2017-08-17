@@ -127,7 +127,7 @@ audio {
 
 
 /* Custom, iPhone Retina */
-@media screen and (min-width : 110px) and (orientation : portrait) {
+@media screen and (orientation : portrait) {
   .entry {
     display: inline-block;
     text-align: center;
@@ -135,7 +135,7 @@ audio {
     width: 90%;
     list-style: none;
     color: white;
-    margin-bottom: 5%;
+    margin: 0% 5% 5% 5%;
     padding-bottom: 3%;
   }
 
@@ -148,7 +148,7 @@ audio {
 }
 
 /* Extra Small Devices, Phones */
-@media screen and (min-width : 100px) and (orientation : landscape) {
+@media screen and (orientation : landscape) {
 
   .entry {
     text-align: center;
@@ -157,7 +157,7 @@ audio {
     width: 40%;
     list-style: none;
     color: white;
-    margin: 0% 3% 5% 3%;
+    margin: 0% 5% 5% 5%;
     padding-bottom: 3%;
   }
 
@@ -171,9 +171,9 @@ audio {
 
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) and (orientation : portrait){
+/*@media only screen and (min-width : 768px) and (orientation : portrait){*/
 
-  .entry {
+  /*.entry {
     text-align: center;
     background-color: rgb(44,44,44);
     height: 30vw;
@@ -187,13 +187,13 @@ audio {
   .entry p {
     font-size: 8pt;
     margin: 0pt;
-  }
+  }*/
 
-}
+/*}*/
 
-@media only screen and (min-width : 768px) and (orientation : landscape){
+/*@media only screen and (min-width : 768px) and (orientation : landscape){*/
 
-  .entry {
+  /*.entry {
     text-align: center;
     background-color: rgb(44,44,44);
     height: 23vw;
@@ -207,17 +207,17 @@ audio {
   .entry p {
     font-size: 6pt;
     margin: 0pt;
-  }
+  }*/
 
-}
+/*}*/
 
 
-/* Medium Devices, Desktops */
+/* Medium Devices, Desktops
 @media only screen and (min-width : 992px) {
 
 }
 
-/* Large Devices, Wide Screens */
+/* Large Devices, Wide Screens
 @media only screen and (min-width : 1200px) {
 
 }
